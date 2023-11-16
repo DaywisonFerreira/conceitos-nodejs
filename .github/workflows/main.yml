@@ -5,6 +5,7 @@ jobs:
   sast_scan:
     if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.base.ref == 'master'
     runs-on: ubuntu-latest
+    steps:
       - name: Self sast-scan
         uses: AppThreat/sast-scan-action@v1.0.0
         continue-on-error: true
