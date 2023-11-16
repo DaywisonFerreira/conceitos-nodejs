@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v1
+        uses: actions/checkout@latest
+        with:
+          ref: ${{ github.sha }}
 
       - name: Self sast-scan
         uses: AppThreat/sast-scan-action@v1.0.0
