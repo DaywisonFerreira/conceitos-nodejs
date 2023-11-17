@@ -16,10 +16,7 @@ jobs:
         type: nodejs,credscan,depscan
       env:
         WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
-    - name: Self dep-scan
-      uses: AppThreat/dep-scan-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
     - name: Upload scan reports
       uses: actions/upload-artifact@v1.0.0
       with:
