@@ -7,15 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
     - name: Self sast-scan
       uses: AppThreat/sast-scan-action@master
-      continue-on-error: true
       with:
-        output: reports
-        type: nodejs,credscan,depscan
-      env:
-        WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
+        type: nodejs    
     
     - name: Upload scan reports
       uses: actions/upload-artifact@v1.0.0
