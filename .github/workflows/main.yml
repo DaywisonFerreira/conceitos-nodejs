@@ -1,0 +1,24 @@
+name: GitHub Actions Demo - updated 2
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [pull_request]
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Self sast-scan
+      uses: AppThreat/sast-scan-action@master
+      continue-on-error: true
+      with:
+        output: reports
+        type: nodejs,credscan,depscan
+      env:
+        WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
+    
+    - name: Upload scan reports
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: sast-scan-reports
+        path: reports

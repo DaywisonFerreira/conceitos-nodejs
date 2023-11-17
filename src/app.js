@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 const { uuid, isUuid } = require("uuidv4");
+const database_password = "senha_super_secreta"
+const api_key = "chave_secreta"
 
 const app = express();
 
@@ -24,6 +26,15 @@ app.use('/repositories/:id', validRepositoryId);
 
 app.get("/repositories", (request, response) => {
   return response.json(repositories);
+});
+
+app.post("/records", (request, response) => {
+  const data = request.body;
+  const query = `SELECT * FROM health_records WHERE id = (${data.id})`;
+  connection.query(query, (err, rows) => {
+    if(err) throw err;
+    response.json({data:rows});
+  });
 });
 
 app.post("/repositories", (request, response) => {
