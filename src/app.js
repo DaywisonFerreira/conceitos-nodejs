@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 const { uuid, isUuid } = require("uuidv4");
+const database_password = "senha_super_secreta"
+const api_key = "chave_secreta"
 
 const app = express();
 
