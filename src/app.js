@@ -59,6 +59,7 @@ app.post("/repositories", (request, response) => {
 
 });
 
+// TODO: change this endpoint
 app.put("/repositories/:id", (request, response) => {
   const {id} = request.params;
   const {title, url, techs} = request.body;
