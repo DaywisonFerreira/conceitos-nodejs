@@ -10,7 +10,11 @@ jobs:
     - name: Self sast-scan
       uses: AppThreat/sast-scan-action@master
       with:
-        type: nodejs    
+        type: nodejs
+      env:
+        SCAN_ID: ${{ github.sha }}
+        WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
+        GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }} 
     
     - name: Upload scan reports
       uses: actions/upload-artifact@v1.0.0
