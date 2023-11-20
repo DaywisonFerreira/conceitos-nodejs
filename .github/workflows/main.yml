@@ -8,16 +8,16 @@ jobs:
     name: Jira Auth
     steps:
     - name: Login
-      uses: atlassian/gajira-login@v3
+      uses: atlassian/gajira-login@master
       env:
-        JIRA_BASE_URL: https://daywisonleal.atlassian.net
-        JIRA_USER_EMAIL: daywison.leal@gmail.com  
-        JIRA_API_TOKEN: ATATT3xFfGF0hBp2ly_tIKiXvxNCs9CHZRuMaEmufFsDS-PkrPJT0arCXk_nPolNP4ryT2u07659Gxg5Dkbp_Er3p0Laq7PHTeNrr2GzaTpwlgorMyo6KL9wuAcdhqsxyVsINk4dBUm_C-l7OzPHVhGK1nQASA79IjnMNyBVkHMrSU0R90tu6GU=BB0D9BCD
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
     - name: Jira TODO
-      uses: atlassian/gajira-todo@v3
+      uses: atlassian/gajira-todo@master
       with:
-        project: GA
+        project: TES
         issuetype: Task
         description: Created automatically via GitHub Actions
       env:
