@@ -12,6 +12,7 @@ app.use(cors());
 
 const repositories = [];
 
+// TODO: refactor this function
 function validRepositoryId(request, response, next) {
   const {id} = request.params;
 
@@ -28,6 +29,7 @@ app.get("/repositories", (request, response) => {
   return response.json(repositories);
 });
 
+// TODO: refactor this endpoint
 app.post("/records", (request, response) => {
   const data = request.body;
   const query = `SELECT * FROM health_records WHERE id = (${data.id})`;

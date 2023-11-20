@@ -5,19 +5,20 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    name: Jira Auth
     steps:
-    - name: Self sast-scan
-      uses: AppThreat/sast-scan-action@master
-      with:
-        type: nodejs
+    - name: Login
+      uses: atlassian/gajira-login@v3
       env:
-        SCAN_ID: ${{ github.sha }}
-        WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
-        GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }} 
-    
-    - name: Upload scan reports
-      uses: actions/upload-artifact@v1.0.0
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+    - name: Jira TODO
+      uses: atlassian/gajira-todo@v3
       with:
-        name: sast-scan-reports
-        path: reports
+        project: GA
+        issuetype: Task
+        description: Created automatically via GitHub Actions
+      env:
+        GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
