@@ -39,6 +39,7 @@ app.post("/records", (request, response) => {
   });
 });
 
+// TODO: refactor this endpoint, change to patch
 app.post("/repositories", (request, response) => {
   const {title, url, techs} = request.body;
 
