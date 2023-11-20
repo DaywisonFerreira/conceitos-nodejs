@@ -51,6 +51,7 @@ app.post("/repositories", (request, response) => {
     likes : 0
   } 
 
+  // TODO: remove this push
   repositories.push(repository);
 
   return response.json(repository);
