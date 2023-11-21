@@ -115,6 +115,4 @@ app.post("/repositories/:id/like", (request, response) => {
 });
 
 module.exports = app;
-// TODO: criar uma tarefa pra refatorar o codigo
-// TODO: criar testes unitarios
-// TODO: criar novo endpoint para listas usuarios
+// TODO: criar testes e2e
