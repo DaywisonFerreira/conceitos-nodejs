@@ -1,6 +1,6 @@
 name: GitHub Actions Demo - updated 3
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [pull_request]
+on: [push]
 jobs:
   build:
 
@@ -17,7 +17,7 @@ jobs:
     - name: Jira TODO
       uses: atlassian/gajira-todo@master
       with:
-        project: KAN
+        project: TES
         issuetype: Task
         description: Created automatically via GitHub Actions
       env:
